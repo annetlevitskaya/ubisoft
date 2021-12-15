@@ -1,0 +1,64 @@
+.header {
+    background-color: #fff;
+    padding: 24px 56px 24px 75px;
+    box-shadow: 0px 14px 32px rgba(32, 56, 85, 0.07);
+}
+
+.header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+}
+
+.header__right_notification {
+    width: 17px;
+    height: 19px;
+    background-image: url('../../img/notifications.svg');
+    margin-right: 20px;
+    position: relative;
+}
+
+.header__right_notification:hover {
+    background-image: url('../../img/notifications-hover.svg');
+}
+
+.header__right_notification.active {
+    background-image: url('../../img/notifications-hover.svg');
+}
+
+.header__right_settings {
+    width: 20px;
+    height: 20px;
+    background-image: url('../../img/settings.svg');
+    margin-right: 37px;
+}
+
+.header__right_settings:hover {
+    background-image: url('../../img/settings-hover.svg');
+}
+
+.header__right_notification,
+.header__right_settings {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: block;
+}
+
+.header__right_notification--new {
+    width: 8px;
+    height: 8px;
+    background-color: #FB0000;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: -1px;
+    right: 0px;
+    box-sizing: border-box;
+}

@@ -1,0 +1,154 @@
+.playlist__item {
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px 0px #2a487c1f;
+    border: 1px solid #D8E1E9;
+    background-color: #fff;
+    padding: 7px 40px;
+    font-family: 'Mulish', sans-serif;
+    margin-bottom: 16px;
+}
+
+.playlist__item_title--edit {
+    padding: 0 12px;
+    height: 36px;
+    box-sizing: border-box;
+    border: 1px solid #08A0F7;
+    border-radius: 8px;
+    color: #26334A;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 700;
+    font-family: 'Mulish', sans-serif;
+    outline: none;
+    width: 414px;
+}
+
+.playlist__item_checkbox {
+    display: none;
+}
+
+.playlist__item_checkbox_label {
+    position: relative;
+    display: inline-block;
+    line-height: 28px;
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    flex-shrink: 0;
+    margin-right: 44px;
+}
+
+.playlist__item_checkbox_label::before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    box-sizing: border-box;
+    height: 24px;
+    border: 1px solid #08A0F7;
+    border-radius: 3px;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: normal;
+    background-color: rgba(8, 160, 247, 0.06);
+}
+
+.playlist__item_checkbox:checked+label:before {
+    background-color: #08A0F7;
+}
+
+.playlist__item_left {
+    display: flex;
+    align-items: center;
+}
+
+.playlist__item_title {
+    color: #26334A;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 700;
+    padding: 9px 0;
+}
+
+.playlist__item_right {
+    display: flex;
+    align-items: center;
+    width: 133px;
+    justify-content: space-between;
+}
+
+.playlist__item_status {
+    background: rgba(200, 152, 28, 0.57);
+    border-radius: 4px;
+    padding: 4px 10px;
+    color: #4E4122;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+}
+
+.playlist__item_delete {
+    cursor: pointer;
+}
+
+.popup {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.185);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup__container {
+    width: 306px;
+    background-color: #fff;
+    box-shadow: 0px 30px 60px rgba(32, 56, 85, 0.15);border-radius: 8px;
+    padding: 15px 50px 37px 39px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.popup__text {
+    padding-bottom: 48px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+    color: #26334A;
+    font-size: 15px;
+    line-height: 19px;
+}
+
+.popup__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.popup__controls_delete {
+    background-color: #BA3409;
+}
+
+.popup__controls_cancel {
+    background-color: #08A0F7;
+}
+
+.popup__controls_delete,
+.popup__controls_cancel {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-size: 16px;
+    line-height: 19px;
+    border-radius: 8px;
+    padding: 12px 16px;
+    border: none;
+    cursor: pointer;
+}

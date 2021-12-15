@@ -1,0 +1,42 @@
+.playlist__add {
+    display: flex;
+    align-items: center;
+    padding: 8px 39px;
+    background-color: #edf4f680;
+    border-radius: 10px;
+    border: 1px solid #D8E1E9;
+    margin-bottom: 16px;
+}
+
+.playlist__add_btn {
+    border: none;
+    outline: none;
+    background-color: initial;
+    margin-right: 33px;
+}
+
+.playlist__add_btn img {
+    width: 24px;
+    height: 24px;
+}
+
+.playlist__add_input {
+    font-size: 14px;
+    color: #26334A;
+    background-color: initial;
+    border: none;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    width: 414px;
+}
+
+.playlist__add_input:focus {
+    background-color: #fff;
+    border-color:#08A0F7;
+    border-radius: 8px;
+    box-sizing: border-box;
+    outline: none;
+}
