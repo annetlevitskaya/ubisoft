@@ -19,6 +19,7 @@
     box-shadow: 0px 30px 60px rgba(32, 56, 85, 0.15);
     border-radius: 10px;
     padding: 39px 124px 45px 39px;
+    margin-bottom: 40px;
 }
 
 .playlist__header {
@@ -34,4 +35,29 @@
     font-size: 15px;
     line-height: 18px;
     color: #26334a99;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.pagination__btn {
+    padding: 12px 16px;
+    background-color: #08A0F7;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.pagination__btn:not(:last-of-type) {
+    margin-right: 40px;
+}
+
+.pagination__btn.disabled {
+    opacity: 0.6;
 }

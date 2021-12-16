@@ -1,5 +1,6 @@
 import react, { useState } from 'react';
 import './PlayList.modules.css';
+import cx from 'classnames';
 import gamesList from '../../games.json';
 import GameItem from '../GameItem/GameItem.js';
 import AddNewGame from '../AddNewGame/AddNewGame.js';
@@ -31,6 +32,14 @@ function PlayList() {
         setCurrentPage(pagesCount);
     }
 
+    const editGameTitle = (id, title) => {
+        setGames(prevGames => prevGames.map(game => game.id === id ? ({ ...game, title }) : game));
+    }
+
+    const editGameCompleted = (id, completed) => {
+        setGames(prevGames => prevGames.map(game => game.id === id ? ({ ...game, completed }) : game));
+    }
+
     const deleteGame = (id) => {
         setGames(prevGames => prevGames.filter( game => game.id !==id));
     }
@@ -53,12 +62,19 @@ function PlayList() {
                     <span className="playlist__header_label">Status</span>
                 </div>
                 <AddNewGame onAdd={addGame} />
-                <GameItem games={currentGame} onDelete={deleteGame} />
+                <GameItem
+                    games={currentGame}
+                    onDelete={deleteGame}
+                    onEditTitle={editGameTitle}
+                    onEditCompleted={editGameCompleted}
+                />
 
-                <button onClick={prevPage}>prev</button>
-                <button onClick={nextPage}>next</button>
-                <button onClick={firstPage}>first</button>
-                <button onClick={lastPage}>last</button>
+                <div className="pagination">
+                    <button onClick={firstPage} className={cx('pagination__btn', currentPage==1 && 'disabled')}> &lt;&lt; </button>
+                    <button onClick={prevPage} className={cx('pagination__btn', currentPage==1 && 'disabled')}> &lt; Prev page</button>
+                    <button onClick={nextPage} className={cx('pagination__btn', currentPage==pagesCount && 'disabled')}>Next page &gt;</button>
+                    <button onClick={lastPage} className={cx('pagination__btn', currentPage==pagesCount && 'disabled')}>&gt;&gt;</button>
+                </div>
             </div>
         </section>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './GameItem.modules.css';
 import deleteIcon from '../../img/delete.svg';
+import closeIcon from '../../img/close.svg';
 
 class GameItem extends Component {
     state = {
@@ -24,15 +25,22 @@ class GameItem extends Component {
     }
 
     openInput = (id, title) => {
-        if (this.state.idToEdit) {
-            this.setState({ idToEdit: null, gameTitle: ''});
-        } else {  
-            this.setState({ idToEdit: id, gameTitle: title });
-        }
+        this.setState({ idToEdit: id, gameTitle: title });
     }
 
-    handleEdit = () => {
-        
+    handleTitleChange = (e) => {
+        this.setState({ gameTitle: e.target.value });
+    };
+
+    handleBlur = () => {
+        const { gameTitle, idToEdit } = this.state;
+        this.props.onEditTitle(idToEdit, gameTitle);
+        this.setState({ idToEdit: null, gameTitle: ''});
+    }
+
+    handleCompletedChange = (id, completed) => {
+        console.log('\n\n\n',id);
+        this.props.onEditCompleted(id, completed)
     }
 
     render() {
@@ -42,26 +50,45 @@ class GameItem extends Component {
         return (
             <>
                 {games.map((game) => (
-                    <section className="playlist__item">
-                    <div className="playlist__item_left">
-                        <input type="checkbox" id="checkbox" className="playlist__item_checkbox" />
-                        <label for="checkbox" className="playlist__item_checkbox_label"></label>
-                            {idToEdit===game.id ? 
-                                <input type='text' className="playlist__item_title--edit" value={this.state.gameTitle} onChange={this.handleEdit}/>
-                                :
-                                <span className="playlist__item_title" onClick={() => this.openInput(game.id, game.title)}>{game.title}</span>
-                            } 
-                    </div>
-                    <div className="playlist__item_right">
-                        <span className="playlist__item_status">to play</span>
-                        <img src={deleteIcon} className="playlist__item_delete" onClick={() => this.handleClick(game.id)}/>
-                    </div>
+                    <section key={game.id} className="playlist__item">
+                        <div className="playlist__item_left">
+                            <input
+                                type="checkbox"
+                                id={`checkbox-${game.id}`}
+                                className="playlist__item_checkbox"
+                                checked={game.completed}
+                                onChange={() => this.handleCompletedChange(game.id, !game.completed)}
+                            />
+                            <label htmlFor={`checkbox-${game.id}`} className="playlist__item_checkbox_label"></label>
+                                {idToEdit === game.id ? (
+                                    <input
+                                        type='text'
+                                        className="playlist__item_title--edit"
+                                        value={this.state.gameTitle}
+                                        onChange={this.handleTitleChange}
+                                        onBlur={this.handleBlur}
+                                    />
+                                ) : (
+                                    <span className="playlist__item_title" onClick={() => this.openInput(game.id, game.title)}>{game.title}</span>
+                                )} 
+                        </div>
+                        <div className="playlist__item_right">
+                            {game.completed===true ? (
+                                <span className="playlist__item_status playlist__item_status--finish">Complete</span>
+                            ) :
+                                <span className="playlist__item_status playlist__item_status--play">to play</span>
+                            }
+                            <img src={deleteIcon} className="playlist__item_delete" onClick={() => this.handleClick(game.id)}/>
+                        </div>
                     </section>
                 ))}
+
                 {isPopupOpen && 
                     <div className="popup">
                         <div className="popup__container">
-                            <button className="popup__close">x</button>
+                            <button className="popup__close" onClick={this.handleClick}>
+                                <img src={closeIcon} />
+                            </button>
                             <h5 className="popup__text">Are you sure you want to delete this item?</h5>
                             <div className="popup__controls">
                                 <button className="popup__controls_delete" onClick={this.handleDelete}>Yes, delete</button>

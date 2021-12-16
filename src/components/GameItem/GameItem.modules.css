@@ -83,14 +83,22 @@
 }
 
 .playlist__item_status {
-    background: rgba(200, 152, 28, 0.57);
     border-radius: 4px;
     padding: 4px 10px;
-    color: #4E4122;
     font-size: 12px;
     line-height: 14px;
     font-weight: 700;
     font-family: 'Roboto', sans-serif;
+}
+
+.playlist__item_status--play {
+    background: #c8981c91;
+    color: #4E4122;
+}
+
+.playlist__item_status--finish {
+    background: #1cbc5391;
+    color: #27653C;
 }
 
 .playlist__item_delete {
@@ -113,7 +121,7 @@
     width: 306px;
     background-color: #fff;
     box-shadow: 0px 30px 60px rgba(32, 56, 85, 0.15);border-radius: 8px;
-    padding: 15px 50px 37px 39px;
+    padding: 49px 50px 37px 39px;
     position: relative;
     box-sizing: border-box;
 }
@@ -151,4 +159,13 @@
     padding: 12px 16px;
     border: none;
     cursor: pointer;
+}
+
+.popup__close {
+    background-color: initial;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 21px;
 }
